@@ -1,0 +1,17 @@
+<% if !@titles.empty? then %>
+  <% count = 1 %>
+  <% @titles.zip(@authors, @abstracts) do |title, author, abstract| %>
+    <h3><%= "【" + count.to_s + "】" + title %></h3>
+    <% author.each_with_index do |a, i| %>
+      <% if i==0 then %>
+        <p><%= a %></p>
+      <% else %>
+        <p><%= "," + a %></p>
+      <% end %>
+    <% end %>
+    <p><%= abstract %></p>
+    <% count += 1 %>
+  <% end %>
+<% else %>
+  <h3>本日のアーカイブ論文はありませんでした。</h3>
+<% end %>

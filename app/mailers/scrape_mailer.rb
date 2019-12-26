@@ -7,7 +7,7 @@ class ScrapeMailer < ApplicationMailer
         mail(
           from: 'scrapearxiv@gmail.com',
           to:   'yuta.u1969@gmail.com',
-          subject: @date
+          subject: @date + "arxiv.org/astro-ph.EP"
         )
     end
 end
