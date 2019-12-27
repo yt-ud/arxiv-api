@@ -5,6 +5,9 @@ require 'csv'
 require 'mail'
 
 class ScrapesController < ApplicationController
+    def index
+    end
+    
     def execute
         # 本日の日付を取得
         presentDate = Date.today.strftime("%a, %-d %b %Y")
