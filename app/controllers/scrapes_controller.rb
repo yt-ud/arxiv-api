@@ -11,7 +11,7 @@ class ScrapesController < ApplicationController
     def execute
         # 本日の日付を取得
         presentDate = Date.today.strftime("%a, %-d %b %Y")
-#        presentDate = "Wed, 25 Dec 2019"
+#        presentDate = "Mon, 30 Dec 2019"
         # 詳細ページのベースURL
         urlBase = "https://arxiv.org/abs/"
         # 論文IDを格納する配列
