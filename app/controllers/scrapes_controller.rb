@@ -14,8 +14,12 @@ class ScrapesController < ApplicationController
 #        presentDate = "Mon, 30 Dec 2019"
         # 詳細ページのベースURL
         urlBase = "https://arxiv.org/abs/"
+        # 各論文pdfページへのベースURL
+        urlPdf = "https://arxiv.org/pdf/"
         # 論文IDを格納する配列
         paperIds = []
+        # 各論文pdfページへURLを格納する配列
+        paperPdfs = []
         # 論文のタイトルを格納する配列
         titles = []
         # 論文の著者を格納する配列
@@ -41,9 +45,10 @@ class ScrapesController < ApplicationController
                 paperIds = content.split        
             end
         end
-        # 各論文のタイトル、著者、アブストを取得
+        # 各論文のタイトル、著者、アブスト、pdfを取得
         paperIds.each do |id|
             urlAbst = urlBase + id
+            paperPdfs.push(urlPdf + id)
             pageAbst = open(urlAbst) do |f|
                 charset = f.charset
                 f.read
@@ -71,6 +76,6 @@ class ScrapesController < ApplicationController
             authorList.push(x.join(", "))
         end
         # ActionMailerによるメール送信
-        ScrapeMailer.send_mail(presentDate, titles, authors, abstracts).deliver
+        ScrapeMailer.send_mail(presentDate, titles, authors, abstracts, paperPdfs).deliver
     end
 end

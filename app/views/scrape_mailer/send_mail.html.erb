@@ -1,9 +1,10 @@
 <% if !@titles.empty? then %>
   <% count = 1 %>
-  <% @titles.zip(@authors, @abstracts) do |title, author, abstract| %>
+  <% @titles.zip(@authors, @abstracts, @urlpdfs) do |title, author, abstract, urlpdf| %>
     <h3><%= "【" + count.to_s + "】" + title %></h3>
     <p><%= author[0] %></p>
     <p><%= abstract %></p>
+    <p><%= urlpdf %></p>
     <% count += 1 %>
   <% end %>
 <% else %>
