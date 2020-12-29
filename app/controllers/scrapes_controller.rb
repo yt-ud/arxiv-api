@@ -26,6 +26,8 @@ class ScrapesController < ApplicationController
         authors = []
         # 論文のアブストを格納する配列
         abstracts = []
+        # 論文のアブストの日本語訳を格納する配列
+        abstracts_ja = []
         # 著者名の一時保存用配列
         tmpAuthors = []
 
@@ -68,6 +70,8 @@ class ScrapesController < ApplicationController
             docAbst.xpath('//div[@id="abs"]').each do |node|
                 abstract = node.css('.abstract').inner_text.gsub("Abstract: ", "")
                 abstracts.push(abstract)
+                abstract_ja = "https://script.google.com/macros/s/AKfycbxlKIwnqWnI78oU7o8MMljKQ1q-LqRzyLb1JpOK_20PedNkoda8/exec?" + "text=" + abstract + "&source=en&target=ja"
+                abstracts_ja.push(abstract_ja)
             end
         end
         # 著者名を２次元から１次元配列へ
@@ -76,6 +80,6 @@ class ScrapesController < ApplicationController
             authorList.push(x.join(", "))
         end
         # ActionMailerによるメール送信
-        ScrapeMailer.send_mail(presentDate, titles, authors, abstracts, paperPdfs).deliver
+        ScrapeMailer.send_mail(presentDate, titles, authors, abstracts, abstracts_ja, paperPdfs).deliver
     end
 end
