@@ -76,6 +76,6 @@ class ScrapesController < ApplicationController
             authorList.push(x.join(", "))
         end
         # ActionMailerによるメール送信
-        ScrapeMailer.send_mail(presentDate, titles, authors, abstracts, abstracts_ja, paperPdfs).deliver
+        ScrapeMailer.send_mail(presentDate, titles, authors, abstracts, paperPdfs).deliver
     end
 end

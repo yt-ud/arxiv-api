@@ -1,5 +1,5 @@
 class ScrapeMailer < ApplicationMailer
-    def send_mail(date, titles, authors, abstracts, abstracts_ja, urlpdfs)
+    def send_mail(date, titles, authors, abstracts, urlpdfs)
         @date = date
         @titles = titles
         @authors = authors
