@@ -4,7 +4,6 @@ class ScrapeMailer < ApplicationMailer
         @titles = titles
         @authors = authors
         @abstracts = abstracts
-        @abstracts_ja = abstracts_ja
         @urlpdfs = urlpdfs
         mail(
           from: 'scrapearxiv@gmail.com',
