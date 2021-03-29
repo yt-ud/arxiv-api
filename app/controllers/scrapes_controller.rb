@@ -30,7 +30,7 @@ class ScrapesController < ApplicationController
         tmpAuthors = []
 
         # 論文一覧ページのスクレイピング
-        urlIndex = 'https://arxiv.org/list/astro-ph.EP/recent'
+        urlIndex = "https://arxiv.org/list/astro-ph.EP/recent"
         charset = nil
         pageIndex = open(urlIndex) do |f|
             charset = f.charset

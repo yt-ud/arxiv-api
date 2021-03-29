@@ -29,6 +29,7 @@ gem 'nokogiri'
 gem 'date'
 gem 'csv'
 gem 'mail'
+gem 'openssl'
 
 group :development, :test do
   gem 'sqlite3', '~> 1.4'
