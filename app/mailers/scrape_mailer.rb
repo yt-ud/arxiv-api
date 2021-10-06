@@ -7,7 +7,8 @@ class ScrapeMailer < ApplicationMailer
         @urlpdfs = urlpdfs
         mail(
           from: 'scrapearxiv@gmail.com',
-          to:   'yuta.u1969@gmail.com',
+          to:   'yufrom2018@gmail.com',
+          cc:   'yuta.u1969@gmail.com',
           subject: @date + "arxiv.org/astro-ph.EP"
         )
     end
