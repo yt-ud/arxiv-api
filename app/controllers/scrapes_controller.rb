@@ -32,7 +32,7 @@ class ScrapesController < ApplicationController
         # 論文一覧ページのスクレイピング
         urlIndex = "https://arxiv.org/list/astro-ph.EP/recent"
         charset = nil
-        pageIndex = open(urlIndex) do |f|
+        pageIndex = URI.open(urlIndex) do |f|
             charset = f.charset
             f.read
         end
@@ -49,7 +49,7 @@ class ScrapesController < ApplicationController
         paperIds.each do |id|
             urlAbst = urlBase + id
             paperPdfs.push(urlPdf + id)
-            pageAbst = open(urlAbst) do |f|
+            pageAbst = URI.open(urlAbst) do |f|
                 charset = f.charset
                 f.read
             end
